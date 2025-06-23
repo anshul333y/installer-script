@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# anshul333y's hyprland install script
+
+mkdir code dl pub docs music pics vids ~/.local/share
+
+sudo pacman -S --noconfirm git openssh zsh stow bluez bluez-utils
+
+chsh -s /usr/bin/zsh
+
+sudo systemctl enable bluetooth.service
+
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+
+git clone https://github.com/anshul333y/.dotfiles.git
+
+cd ~/.dotfiles && stow . && cd
+
+# installing ohmyzsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use
+
+# installing paru
+git clone https://aur.archlinux.org/paru-bin.git ~/dl/paru && cd ~/dl/paru && makepkg -si --noconfirm && cd && rm -rf ~/dl/paru
+
+# installing packages
+sudo pacman -S --noconfirm nvim lazygit fzf ripgrep fd tmux nodejs npm docker
+sudo pacman -S --noconfirm ttf-cascadia-code-nerd noto-fonts
+sudo pacman -S --noconfirm cronie brightnessctl acpi pacman-contrib python-pywal uwsm xorg-xrdb
+sudo pacman -S --noconfirm xdg-desktop-portal-hyprland qt5-wayland qt6-wayland xdg-desktop-portal-gtk xdg-user-dirs
+sudo pacman -S --noconfirm hyprland hyprpaper hypridle hyprlock rofi-wayland waybar dunst polkit-gnome gnome-keyring
+sudo pacman -S --noconfirm kitty firefox telegram-desktop discord flatpak wl-clipboard sxiv mpv
+paru -S --noconfirm hyprshot-git wlogout-git spotify-adblock-git google-chrome brave-bin visual-studio-code-bin postman-bin
+flatpak install --noninteractive flathub com.github.wwmm.easyeffects
