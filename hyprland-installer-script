@@ -4,17 +4,31 @@
 
 mkdir code dl pub docs music pics vids ~/.local/share
 
+printf "\n%${COLUMNS}s\n\n" | tr ' ' '-'
+
 sudo pacman -S --noconfirm git openssh zsh stow bluez bluez-utils
+
+printf "\n%${COLUMNS}s\n\n" | tr ' ' '-'
 
 chsh -s /usr/bin/zsh
 
+printf "\n%${COLUMNS}s\n\n" | tr ' ' '-'
+
 sudo systemctl enable bluetooth.service
+
+printf "\n%${COLUMNS}s\n\n" | tr ' ' '-'
 
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 
+printf "\n%${COLUMNS}s\n\n" | tr ' ' '-'
+
 git clone https://github.com/anshul333y/.dotfiles.git
 
+printf "\n%${COLUMNS}s\n\n" | tr ' ' '-'
+
 cd ~/.dotfiles && stow . && cd
+
+printf "\n%${COLUMNS}s\n\n" | tr ' ' '-'
 
 # installing ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -22,8 +36,12 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use
 
+printf "\n%${COLUMNS}s\n\n" | tr ' ' '-'
+
 # installing paru
 git clone https://aur.archlinux.org/paru-bin.git ~/dl/paru && cd ~/dl/paru && makepkg -si --noconfirm && cd && rm -rf ~/dl/paru
+
+printf "\n%${COLUMNS}s\n\n" | tr ' ' '-'
 
 # installing packages
 sudo pacman -S --noconfirm nvim lazygit fzf ripgrep fd tmux nodejs npm docker
@@ -32,5 +50,11 @@ sudo pacman -S --noconfirm cronie brightnessctl acpi pacman-contrib python-pywal
 sudo pacman -S --noconfirm xdg-desktop-portal-hyprland qt5-wayland qt6-wayland xdg-desktop-portal-gtk xdg-user-dirs
 sudo pacman -S --noconfirm hyprland hyprpaper hypridle hyprlock rofi-wayland waybar dunst polkit-gnome gnome-keyring
 sudo pacman -S --noconfirm kitty firefox telegram-desktop discord flatpak wl-clipboard sxiv mpv
+
+printf "\n%${COLUMNS}s\n\n" | tr ' ' '-'
+
 paru -S --noconfirm hyprshot-git wlogout-git spotify-adblock-git google-chrome brave-bin visual-studio-code-bin postman-bin
+
+printf "\n%${COLUMNS}s\n\n" | tr ' ' '-'
+
 flatpak install --noninteractive flathub com.github.wwmm.easyeffects
